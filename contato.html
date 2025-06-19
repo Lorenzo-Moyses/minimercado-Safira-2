@@ -26,41 +26,79 @@
   </header>
 
   <main class="container mt-4">
-    <h2 id="saudacao"></h2>
-    <h3>Fale Conosco</h3>
-    <p>Entre em contato conosco:</p>
-    <ul>
-      <li><strong>E-mail:</strong> safira@email.com</li>
-      <li><strong>Telefone:</strong> (51) 99999-9999</li>
-      <li><strong>Endereço:</strong> Rua das Safiras, 123 – Porto Alegre – RS</li>
-      <li><strong>Atendimento:</strong> Segunda a sábado, das 8h às 18h</li>
-    </ul>
+    <h2 id="saudacao">Bem-vindo!</h2>
+    <p>Preencha os dados abaixo para cadastrar-se e agendar a entrega ou retirada de seus produtos.</p>
 
-    <hr>
+    <form id="formAgendamento" action="#" method="post">
 
-    <h4>Agende sua entrega ou retirada</h4>
-    <form class="mt-3" id="formAgendamento">
-      <div class="mb-3">
-        <label for="nome" class="form-label">Nome:</label>
-        <input type="text" class="form-control" id="nome" required>
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">E-mail:</label>
-        <input type="email" class="form-control" id="email" required>
-      </div>
-      <div class="mb-3">
-        <label for="telefone" class="form-label">Telefone:</label>
-        <input type="tel" class="form-control" id="telefone">
-      </div>
-      <div class="mb-3">
-        <label for="data" class="form-label">Data da entrega/retirada:</label>
-        <input type="date" class="form-control" id="data" required>
-      </div>
-      <div class="mb-3">
-        <label for="hora" class="form-label">Horário:</label>
-        <input type="time" class="form-control" id="hora" required>
-      </div>
-      <button type="submit" class="btn btn-success" aria-label="Agendar horário">Agendar</button>
+      <!-- Dados Pessoais -->
+      <fieldset class="mb-3">
+        <legend>Dados do Cliente</legend>
+
+        <div class="mb-2">
+          <label for="nome">Nome completo:</label>
+          <input type="text" id="nome" name="nome" class="form-control" placeholder="Seu nome completo" required>
+        </div>
+
+        <div class="mb-2">
+          <label for="cpf">CPF:</label>
+          <input type="number" id="cpf" name="cpf" class="form-control" placeholder="00000000000" required>
+        </div>
+
+        <div class="mb-2">
+          <label>Sexo:</label><br>
+          <input type="radio" id="masc" name="sexo" value="masculino" required>
+          <label for="masc">Masculino</label>
+          <input type="radio" id="fem" name="sexo" value="feminino">
+          <label for="fem">Feminino</label>
+        </div>
+
+        <div class="mb-2">
+          <label for="endereco">Endereço:</label>
+          <input type="text" id="endereco" name="endereco" class="form-control" placeholder="Rua, número, bairro" required>
+        </div>
+
+        <div class="mb-2">
+          <label for="telefone">Telefone:</label>
+          <input type="tel" id="telefone" name="telefone" class="form-control" placeholder="(00) 00000-0000" required>
+        </div>
+
+        <div class="mb-2">
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" name="email" class="form-control" placeholder="seuemail@exemplo.com" required>
+        </div>
+
+        <div class="form-check mb-2">
+          <input type="checkbox" id="promocoes" name="promocoes" class="form-check-input">
+          <label for="promocoes" class="form-check-label">Aceito receber promoções por e-mail</label>
+        </div>
+      </fieldset>
+
+      <!-- Agendamento -->
+      <fieldset class="mb-3">
+        <legend>Agendamento</legend>
+
+        <div class="mb-2">
+          <label for="tipo">Tipo de serviço:</label>
+          <select id="tipo" name="tipo" class="form-control" required>
+            <option value="">Selecione</option>
+            <option value="retirada">Retirada no local</option>
+            <option value="entrega">Tele-entrega</option>
+          </select>
+        </div>
+
+        <div class="mb-2">
+          <label for="data">Data:</label>
+          <input type="date" id="data" name="data" class="form-control" required>
+        </div>
+
+        <div class="mb-2">
+          <label for="hora">Horário:</label>
+          <input type="time" id="hora" name="hora" class="form-control" required>
+        </div>
+      </fieldset>
+
+      <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
   </main>
 
@@ -74,7 +112,6 @@
 
   <!-- JS de saudação e confirmação -->
   <script>
-    // Saudação dinâmica
     const saudacao = document.getElementById('saudacao');
     const hora = new Date().getHours();
     if (hora < 12) {
@@ -85,7 +122,6 @@
       saudacao.textContent = "Boa noite!";
     }
 
-    // Mensagem de confirmação no envio
     document.getElementById('formAgendamento').addEventListener('submit', function (e) {
       e.preventDefault();
       alert("Agendamento realizado com sucesso!");
@@ -95,4 +131,5 @@
 </body>
 
 </html>
+
 
